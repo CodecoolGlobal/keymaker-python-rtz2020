@@ -22,11 +22,27 @@ shift_characters("zozo", 5)
 
 
 def pad_up_to(word, shift, n):
-    """
-    >>> pad_up_to('abb', 5, 11)
-    'abbfggkllpq'
-    """
-    pass
+    solution=""
+    while len(solution) <= n:
+        letter = [char for char in word]
+        for i in range(len(letter)):
+            position = 0
+            for j in letters:
+                if letter[i] == j:
+                    try:
+                        letter[i] = letters[position+shift]
+                    except IndexError:
+                        letter[i] = letters[shift-(26-position)]
+                    break
+                else:
+                    position += 1
+        saver = "".join(letter)
+        solution+=saver
+        word=saver
+        saver=""
+    print(solution)
+
+pad_up_to("asd", 2, 11)
 
 
 def abc_mirror(word):
