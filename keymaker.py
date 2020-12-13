@@ -1,9 +1,24 @@
+letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+
 def shift_characters(word, shift):
-    """
-    >>> shift_characters('abby', 5)
-    'fggd'
-    """
-    pass
+    letter = [char for char in word]
+    for i in range(len(letter)):
+        position = 0
+        for j in letters:
+            if letter[i] == j:
+                try:
+                    letter[i] = letters[position+shift]
+                except IndexError:
+                    letter[i] = letters[shift-(26-position)]
+                break
+            else:
+                position += 1
+    solution = "".join(letter)
+    print(solution)
+
+
+shift_characters("zozo", 5)
 
 
 def pad_up_to(word, shift, n):
