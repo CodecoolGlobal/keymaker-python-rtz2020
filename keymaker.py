@@ -2,6 +2,7 @@ letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
 
 
 def shift_characters(word, shift):
+    word=word.lower()
     letter = [char for char in word]
     for i in range(len(letter)):
         position = 0
@@ -22,6 +23,7 @@ shift_characters("zozo", 5)
 
 
 def pad_up_to(word, shift, n):
+    word=word.lower()
     solution=""
     while len(solution) <= n:
         letter = [char for char in word]
@@ -46,11 +48,27 @@ pad_up_to("asd", 2, 11)
 
 
 def abc_mirror(word):
-    """
-    >>> abc_mirror('abcd')
-    'zyxw'
-    """
-    pass
+    word=word.lower()
+    solution=""
+    letter = [char for char in word]
+    for i in range(len(letter)):
+        position = 0
+        for j in letters:
+            if letter[i] == j:
+                try:
+                    letter[i] = letters[-position-1]
+                except IndexError:
+                    letter[i] = letters[position+1]
+                break
+            else:
+                position += 1
+    saver = "".join(letter)
+    solution+=saver
+    word=saver
+    saver=""
+    print(solution)
+
+abc_mirror("asd")
 
 
 def create_matrix(word1, word2):
