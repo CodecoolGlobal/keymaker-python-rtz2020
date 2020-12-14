@@ -1,3 +1,5 @@
+
+
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 
@@ -16,15 +18,15 @@ def shift_characters(word, shift):
             else:
                 position += 1
     solution = "".join(letter)
-    print(solution)
+    return solution
 
 
-shift_characters("zozo", 5)
+print(shift_characters("zozo", 5))
 
 
 def pad_up_to(word, shift, n):
     word=word.lower()
-    solution=""
+    solution=word
     while len(solution) <= n:
         letter = [char for char in word]
         for i in range(len(letter)):
@@ -42,9 +44,9 @@ def pad_up_to(word, shift, n):
         solution+=saver
         word=saver
         saver=""
-    print(solution)
+    return solution[0:n]
 
-pad_up_to("asd", 2, 11)
+print(pad_up_to("abb", 5, 11))
 
 
 def abc_mirror(word):
@@ -66,18 +68,23 @@ def abc_mirror(word):
     solution+=saver
     word=saver
     saver=""
-    print(solution)
+    return solution
 
-abc_mirror("asd")
+print(abc_mirror("asd"))
+
 
 
 def create_matrix(word1, word2):
-    """
-    >>> create_matrix('mamas', 'papas')
-    ['bpbph', 'mamas', 'bpbph', 'mamas', 'esesk']
-    """
-    pass
+    new_word = ""
+    matrix = []
+    index = None
+    for i in word2:
+        index=letters.index(i)
+        new_word=shift_characters(word1,index)
+        matrix.append(new_word)
+    return matrix
 
+print(create_matrix("mamas", "papas"))
 
 def zig_zag_concatenate(matrix):
     """
