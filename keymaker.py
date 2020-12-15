@@ -98,12 +98,24 @@ print(zig_zag_concatenate(["aaa", "bbb", "ccc", "ddd"]))
 
 
 def rotate_right(word, n):
-    """
-    >>> rotate_right('abcdefgh', 3)
-    'fghabcde'
-    """
-    pass
+    word=word.lower()
+    letter = [char for char in word]
+    letters = [char for char in word]
+    for i in range(len(letter)):
+        position = 0
+        for j in letters:
+            if letter[i] == j:
+                try:
+                    letter[i] = letters[position-n]
+                except IndexError:
+                    letter[i] = letters[position-(n%4)]
+                break
+            else:
+                position += 1
+    solution = "".join(letter)
+    return solution
 
+print(rotate_right("abcd", 2))
 
 def get_square_index_chars(word):
     """
