@@ -87,11 +87,14 @@ def create_matrix(word1, word2):
 print(create_matrix("mamas", "papas"))
 
 def zig_zag_concatenate(matrix):
-    """
-    >>> zig_zag_concatenate(['abc', 'def', 'ghi', 'jkl'])
-    'adgjkhebcfil'
-    """
-    pass
+    word1 = matrix[0]
+    word2 = matrix[1]
+    word3 = matrix[2]
+    word4 = matrix[3]
+    solution = word1[0] + word2[0] + word3[0] + word4[0] + word4[1] + word3[1] + word2[1] + word1[1] + word1[2] + word2[2] + word3[2] + word4[2]
+    return solution
+
+print(zig_zag_concatenate(["aaa", "bbb", "ccc", "ddd"]))
 
 
 def rotate_right(word, n):
