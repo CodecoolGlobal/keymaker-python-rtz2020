@@ -118,11 +118,17 @@ def rotate_right(word, n):
 print(rotate_right("abcd", 2))
 
 def get_square_index_chars(word):
-    """
-    >>> get_square_index_chars('abcdefghijklm')
-    'abej'
-    """
-    pass
+    solution=""
+    word=word.lower()
+    letter = [char for char in word]
+    for i in range(len(letter)):
+        try:
+            solution += letter[i*i]
+        except:
+            continue
+    return solution
+
+print(get_square_index_chars("abcdefghijklm"))
 
 
 def remove_odd_blocks(word, block_length):
