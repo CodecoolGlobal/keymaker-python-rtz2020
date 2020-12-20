@@ -108,7 +108,7 @@ def rotate_right(word, n):
                 try:
                     letter[i] = letters[position-n]
                 except IndexError:
-                    letter[i] = letters[position-(n%4)]
+                    letter[i] = letters[(position-n)-len(letters)]
                 break
             else:
                 position += 1
@@ -154,11 +154,12 @@ print(remove_odd_blocks("abcdefghijklm", 3))
 
 
 def reduce_to_fixed(word, n):
-    """
-    >>> reduce_to_fixed('abcdefghijklm', 6)
-    'bafedc'
-    """
-    pass
+    word2 = pad_up_to(word, 0, 6)
+    n = n//3
+    word3 = rotate_right(word2, -n)
+    return word3[::-1]
+
+print(reduce_to_fixed("abcdefghijklm", 6))
 
 
 def hash_it(word):
