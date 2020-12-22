@@ -1,4 +1,4 @@
-
+import string
 
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
@@ -66,12 +66,14 @@ def abc_mirror(word):
 
 
 def create_matrix(word1, word2):
+    new_word = ""
     matrix = []
     index = None
+    letters = string.ascii_lowercase
     for i in word2:
         index=letters.index(i)
-        word1=shift_characters(word1,index)
-        matrix.append(word1)
+        new_word=shift_characters(word1,index)
+        matrix.append(new_word)
     return matrix
 
 
@@ -138,6 +140,7 @@ def remove_odd_blocks(word, block_length):
     block = ""
     turn=0
     solution = []
+    solution2 = ""
     for i in range(len(letter)):
         three += letter[i]
         block = "".join(three)
@@ -148,7 +151,15 @@ def remove_odd_blocks(word, block_length):
             three = []
             block = ""
     solution.append(block)
-    return solution[0::2]
+    try:
+        for i in range(len(solution)):
+            if i%2==1:
+                del solution[i]
+    except:
+        i=i
+    for j in range(len(solution)):
+        solution2+=solution[j]
+    return solution2
 
 
 def reduce_to_fixed(word, n):
