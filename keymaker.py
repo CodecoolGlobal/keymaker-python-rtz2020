@@ -129,7 +129,7 @@ def get_square_index_chars(word):
     for i in range(len(letter)):
         try:
             solution += letter[i*i]
-        except():
+        except Exception:
             continue
     return solution
 
@@ -156,7 +156,7 @@ def remove_odd_blocks(word, block_length):
         for i in range(len(solution)):
             if i % 2 == 1:
                 del solution[i]
-    except():
+    except Exception:
         i = i
     for j in range(len(solution)):
         solution2 += solution[j]
