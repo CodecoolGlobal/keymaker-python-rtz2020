@@ -1,10 +1,11 @@
 import string
 
-letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+                                                                                                "w", "x", "y", "z"]
 
 
 def shift_characters(word, shift):
-    word=word.lower()
+    word = word.lower()
     letter = [char for char in word]
     for i in range(len(letter)):
         position = 0
@@ -22,7 +23,7 @@ def shift_characters(word, shift):
 
 
 def pad_up_to(word, shift, n):
-    solution=word
+    solution = word
     while len(solution) <= n:
         letter = [char for char in word]
         for i in range(len(letter)):
@@ -37,15 +38,15 @@ def pad_up_to(word, shift, n):
                 else:
                     position += 1
         saver = "".join(letter)
-        solution+=saver
-        word=saver
-        saver=""
+        solution += saver
+        word = saver
+        saver = ""
     return solution[0:n]
 
 
 def abc_mirror(word):
-    word=word.lower()
-    solution=""
+    word = word.lower()
+    solution = ""
     letter = [char for char in word]
     for i in range(len(letter)):
         position = 0
@@ -59,9 +60,9 @@ def abc_mirror(word):
             else:
                 position += 1
     saver = "".join(letter)
-    solution+=saver
-    word=saver
-    saver=""
+    solution += saver
+    word = saver
+    saver = ""
     return solution
 
 
@@ -71,31 +72,31 @@ def create_matrix(word1, word2):
     index = None
     letters = string.ascii_lowercase
     for i in word2:
-        index=letters.index(i)
-        new_word=shift_characters(word1,index)
+        index = letters.index(i)
+        new_word = shift_characters(word1, index)
         matrix.append(new_word)
     return matrix
 
 
 def zig_zag_concatenate(matrix):
-    solution=""
-    solution1=""
-    solution3=""
-    turn=0
-    while turn!=len(matrix):
+    solution = ""
+    solution1 = ""
+    solution3 = ""
+    turn = 0
+    while turn != len(matrix):
         for i in range(len(matrix)):
-            if turn%2==0:
+            if turn % 2 == 0:
                 for j in matrix:
-                    solution+=j[turn]
+                    solution += j[turn]
                 solution3 += solution
                 solution = ""
             else:
                 for j in matrix:
-                    solution1+=j[turn]
-                solution2 = solution1 [::-1]
+                    solution1 += j[turn]
+                solution2 = solution1[::-1]
                 solution3 += solution2
                 solution1 = ""
-            turn+=1
+            turn += 1
     return solution3
 
 
@@ -122,23 +123,23 @@ def rotate_right(word, n):
 
 
 def get_square_index_chars(word):
-    solution=""
-    word=word.lower()
+    solution = ""
+    word = word.lower()
     letter = [char for char in word]
     for i in range(len(letter)):
         try:
             solution += letter[i*i]
-        except:
+        except():
             continue
     return solution
 
 
 def remove_odd_blocks(word, block_length):
-    word=word.lower()
+    word = word.lower()
     letter = [char for char in word]
     three = []
     block = ""
-    turn=0
+    turn = 0
     solution = []
     solution2 = ""
     for i in range(len(letter)):
@@ -153,12 +154,12 @@ def remove_odd_blocks(word, block_length):
     solution.append(block)
     try:
         for i in range(len(solution)):
-            if i%2==1:
+            if i % 2 == 1:
                 del solution[i]
-    except:
-        i=i
+    except():
+        i = i
     for j in range(len(solution)):
-        solution2+=solution[j]
+        solution2 += solution[j]
     return solution2
 
 
